@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Time!</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <title>Quiz Time!</title>
     
-</head>
-<body>
-<div class="row">
-    <div class="col-md-2">
-        <p id="timer">50</p>
-    </div>
-
-</div>
-
-<div class="row">
-    <div class="col-12 margin">
-        <button type="button" class="btn btn-secondary btn-lg btn-block" id="startButton" onclick="startQuiz()">Start the quiz!</button>
-    </div>
-</div>
-<script src="./script.js"></script>
-</body>
+    </head>
+    <body>
+    
+    <main class="container-fluid">
+    <section class="row scoreandtime">
+            <div class="col-6 text-center">
+                <a href="#" id="highscore">Past Scores</a>
+            </div>
+            <div class="col-6 text-center"><span id="highscore">Time Left: </span><span id="timeleft">Banana</span></div>
+    </section>
+    <section class="row">
+       <div class="col-md-8 quiz-frame text-center">
+            <h1>How much do you know about bananas?</h1>
+            <button type="button" class="btn" id="start-button">We're about to find out</button>
+       </div>
+    </section>
+    </main>
+    </body>
+    <script src="script.js"></script>
 </html>

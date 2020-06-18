@@ -1,3 +1,111 @@
-.margin {
-    margin: 50px 0px 50px 0px;
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(255, 255, 155);
+    height: 100%;
+    margin: 0;
+}
+
+h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    size: 34px;
+    font-weight: 800;
+}
+
+h2{
+    font-weight: 700;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#timeleft {
+    color: green;
+    font-size: 40px;
+}
+
+#timeleft:hover {
+    text-decoration: underline;
+    color: brown;
+}
+
+.row{
+    margin-left:0;
+}
+
+section{
+    width:100%;
+}
+
+.scoreandtime{
+    background-color: rgb(252, 166, 209);
+    width:100%;
+    position:fixed;
+    margin-left: -15px;
+    border-bottom: 5px rgb(252, 197, 206) solid;
+}
+
+.container-fluid{
+    height:100%;
+    width: 100%;
+    display:flex;
+    align-content: center;
+}
+
+.quiz-frame{
+    margin: auto;
+    background-color:rgb(248, 240, 240);
+    border:black 1px dashed;
+    border-radius:10px;
+    padding:50px 20px;
+    animation-name: open;
+    animation-duration: 1s;
+    animation-direction: normal; 
+    overflow:hidden;
+    opacity:1;
+    
+}
+
+.result{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color:white;
+    font-weight:bold;
+    font-size:18px;
+    padding:10px;
+    position:fixed;
+    width:100%;
+    bottom:0;
+    border-top:2px solid black;
+    margin-left:-15px;
+    opacity:0;
+}
+  
+.btn{
+    color:white;
+    background-color:black;
+    border-radius:3px;
+    padding:2px 7px;
+    margin:10px 10px 10px 0;
+}
+
+.btn:hover{
+    text-decoration:none;
+    color:white;
+    background-color:rgb(124, 124, 124)
+}
+
+.end{
+    display:none;
+}
+
+#highscore{
+    font-size: 40px;
+    color:green;
+}
+
+
+#highscore:hover{
+    color: brown;
 }
