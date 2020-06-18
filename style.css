@@ -3,14 +3,13 @@ html {
 }
 
 body {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: rgb(255, 255, 155);
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(rgba(252, 197, 206, 0.75), rgba(0, 0, 0, 0.5)),url(./Assets/bananabackground.jpg);
     height: 100%;
     margin: 0;
 }
 
 h1{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     size: 34px;
     font-weight: 800;
 }
@@ -18,17 +17,10 @@ h1{
 h2{
     font-weight: 700;
     font-size: 30px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-#timeleft {
-    color: green;
-    font-size: 40px;
-}
-
-#timeleft:hover {
-    text-decoration: underline;
-    color: brown;
+.possibleanswer {
+    font-size: 16px;
 }
 
 .row{
@@ -40,11 +32,11 @@ section{
 }
 
 .scoreandtime{
-    background-color: rgb(252, 166, 209);
+    background-color: rgb(252, 166, 209, 0.75);
     width: 100%;
     position: fixed;
     margin-left: -15px;
-    border-bottom: 5px rgb(252, 197, 206) solid;
+    border-bottom: 5px rgb(252, 197, 206, 0.75) solid;
 }
 
 .container-fluid{
@@ -56,8 +48,8 @@ section{
 
 .quiz-frame{
     margin: auto;
-    background-color:rgb(248, 240, 240);
-    border:black 1px dashed;
+    background-color:rgb(248, 240, 240, 0.75);
+    border:rgba(255, 252, 71, 0.75) 6px groove;
     padding: 30px 10px;
     
 }
@@ -70,7 +62,6 @@ section{
 }
 
 .result{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color:white;
     font-weight:bold;
     font-size:18px;
@@ -86,27 +77,33 @@ section{
 .btn{
     color:white;
     background-color:black;
-    border-radius:3px;
     padding:2px 7px;
     margin:10px 10px 10px 0;
 }
 
 .btn:hover{
-    text-decoration:none;
-    color:white;
     background-color:rgb(124, 124, 124)
 }
 
-.end{
-    display:none;
+p.winnerscreen{
+    font-size: 18px;
 }
 
 #highscore{
-    font-size: 40px;
+    font-size: 30px;
     color:green;
 }
 
-
 #highscore:hover{
+    color: brown;
+}
+
+#timeleft {
+    color: green;
+    font-size: 30px;
+}
+
+#timeleft:hover {
+    text-decoration: underline;
     color: brown;
 }

@@ -1,24 +1,21 @@
 var startButton = document.querySelector('#start-button');
 var timer = document.getElementById('timeleft');
 var quizFrame = document.querySelector('.quiz-frame');
+var score = document.getElementById('score');
+var questionPrompt = quizFrame.querySelectorAll('h1')[0]
 var feedback = document.querySelector('.feedback');
-var scoreandtime = document.querySelector('.scoreandtime');
-var score = document.querySelector('#score');
-var endScreen = document.querySelector('.end');
+var pastscores = document.querySelector('#highscore');
 var scoreSubmit = document.querySelector('.scoresubmit')
 
-// These are the text fields in the quiz fields
-var questionPrompt = quizFrame.querySelectorAll('h1')[0]
-
 // Set starting variables
-var questionPosition = 1;
-var time = 60;
+var questionNumber = 1;
+var time = 90;
 var rightAnswers = 0;
 
 // Create objects with questions
-var quizObj = {
+var qAndAObject = {
     question1: {
-        question : "Click B",
+        question : "Choose B",
         answers : [
             "A",
             "B",
@@ -67,6 +64,56 @@ var quizObj = {
         ],
         correct : "C"
     },
+    question6: {
+        question : "Choose C",
+        answers : [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        correct : "C"
+    },
+    question7: {
+        question : "Choose C",
+        answers : [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        correct : "C"
+    },
+    question8: {
+        question : "Choose C",
+        answers : [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        correct : "C"
+    },
+    question9: {
+        question : "Choose C",
+        answers : [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        correct : "C"
+    },
+    question10: {
+        question : "Choose C",
+        answers : [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        correct : "C"
+    },
     getQuestion : function(x){
         var question = "";
         switch(x){
@@ -84,6 +131,21 @@ var quizObj = {
                 break;
             case 5:
                 question = this.question5.question;
+                break;
+            case 6:
+                question = this.question6.question;
+                break;
+            case 7:
+                question = this.question7.question;
+                break;
+            case 8:
+                question = this.question8.question;
+                break;
+            case 9:
+                question = this.question9.question;
+                break;
+            case 10:
+                question = this.question10.question;
                 break;
         }
         return question;
@@ -106,6 +168,21 @@ var quizObj = {
             case 5:
                 answers = this.question5.answers[b];
                 break;
+            case 6:
+                answers = this.question6.answers[b];
+                break;
+            case 7:
+                answers = this.question7.answers[b];
+                break;
+            case 8:
+                answers = this.question8.answers[b];
+                break;
+            case 9:
+                answers = this.question9.answers[b];
+                break;
+            case 10:
+                answers = this.question10.answers[b];
+                break;
         }
         return answers;
     },
@@ -127,12 +204,27 @@ var quizObj = {
             case 5:
                 correctAnswers = this.question5.correct;
                 break;
+            case 6:
+                correctAnswers = this.question6.correct;
+                break;
+            case 7:
+                correctAnswers = this.question7.correct;
+                break;
+            case 8:
+                correctAnswers = this.question8.correct;
+                break;
+            case 9:
+                correctAnswers = this.question9.correct;
+                break;
+            case 10:
+                correctAnswers = this.question10.correct;
+                break;
         }
         return correctAnswers;
     }
 };
 
-// Check if there is data in local storage for the score object, if not create an empty one
+// Creates object in local storage
 var scoreObj = JSON.parse(localStorage.getItem('scoreObj'));
 if (scoreObj === null){
     var scoreObj = {
@@ -142,9 +234,9 @@ if (scoreObj === null){
 }  
 
 function startTimer(){
-    // Output time
+    // Shows time remaining
     timer.textContent = "Time Left: " + time;
-    // Countdown time
+    // Timer
         interval = setInterval(function() {
             if (time > 0) {
                 time--
@@ -156,57 +248,44 @@ function startTimer(){
 }
 
 function askQuestion(){
-    if(questionPosition > 5){
+    // Checks to see if quiz end is reached
+    if(questionNumber > 10) {
         feedback.innerHTML = "";
         endQuiz();
     } else{
-        // Clear quiz frame html
+        // Generates question in an H1
         startButton.style.display = "none";
         quizFrame.innerHTML = "";
-
-        // Set header to question
         questionPrompt = document.createElement('h2');
-        questionPrompt.textContent = quizObj.getQuestion(questionPosition);
+        questionPrompt.textContent = qAndAObject.getQuestion(questionNumber);
         quizFrame.append(questionPrompt);
-
-        // Create answer options
+        // Generates potential answers within buttons
         for(var i = 0; i < 4; i++){
             answerOption = document.createElement('a');
-            answerOption.classList.add('btn', 'col-md-8', 'possibleanswer');
+            answerOption.classList.add('btn', 'col-md-10', 'possibleanswer');
             answerOption.setAttribute("href","#");
-            answerOption.textContent = quizObj.getAnswers(questionPosition,i);
+            answerOption.textContent = qAndAObject.getAnswers(questionNumber,i);
             quizFrame.append(answerOption);
         }
         var answerOption = document.querySelector('.possibleanswer')
     }
 }
 
-
+// If player answers correctly, this runs
 function correct(){
-    // Run if a correct answer is submitted
-      // Increase question position
-    questionPosition++;
-
-    // Increase correct answer counter
+    questionNumber++;
     rightAnswers++;
     feedback.innerHTML = "<h1>Good Answer!</h1>"
-
-    // Set next question
     askQuestion();
 }
 
+// If player answers incorrectly, this runs
 function wrong(){
-    // Run if a wrong answer is submitted
 
-    // Reduce time
     time -= 10;
-    timer.textContent = time;
-    feedback.innerHTML = "I think you got that one wrong..."
-
-    // Increase question position
-    questionPosition++;
-
-    // Set next question
+    timer.textContent = "Time Left: " + time;
+    feedback.innerHTML = "<h1>I think you got that one wrong...</h1>"
+    questionNumber++;
     askQuestion();
 }
 
@@ -233,53 +312,44 @@ function endQuiz(){
 }
 
 function submitScore(){
-    // Add new score to score object and add to local storage
     scoreObj.user.push(document.querySelector('#playername').value);
-    scoreObj.score.push(time);
+    scoreObj.score.push(time + rightAnswers);
     localStorage.setItem('scoreObj', JSON.stringify(scoreObj));
-    getScore();
+    highScores();
 }
 
-function getScore(){
-    // Output the high scores
-    // Clear HTML Frame
+function highScores(){
     quizFrame.innerHTML = "";
-
-    // Get score object from local storage
     var newScoreObj = JSON.parse(localStorage.getItem('scoreObj'))
 
-    // Output high scores
+    // Clears quiz page and shows high scores
     if (scoreObj.user.length !== 0){
         for(var i = 0; i < newScoreObj.user.length; i++){
             var highscoreString =  newScoreObj.user[i] + " - " + newScoreObj.score[i];
             var highscoreText = document.createElement('p');
             highscoreText.innerHTML = highscoreString;
-            highscoreText.classList.add('highscore-text');
+            highscoreText.classList.add('winnerscreen');
             quizFrame.prepend(highscoreText);
         }
     }
 
-    // Create button to replay game
-    var replayLink = document.createElement('a');
-    replayLink.textContent = "Replay";
-    replayLink.setAttribute("href","#");
-    replayLink.classList.add('replay-link');
-    replayLink.classList.add('btn');
-    quizFrame.append(replayLink);
-
-    // If the score Object has data in it, give option to clear local storage
-    if (scoreObj.user.length !== 0){
-        var clearLink = document.createElement('a');
-        clearLink.textContent = "Clear Scores";
-        clearLink.setAttribute("href","#");
-        clearLink.classList.add('clear-link');
-        clearLink.classList.add('btn');
-        quizFrame.append(clearLink);
-    }
+    // Create buttons to replay game and clear past scores
+    var newGame = document.createElement('a');
+    newGame.textContent = "Start A New Game";
+    newGame.setAttribute("href","#");
+    newGame.classList.add('newgame');
+    newGame.classList.add('btn');
+    quizFrame.append(newGame);
+    var deleteScores = document.createElement('a');
+    deleteScores.textContent = "Clear Past Scores";
+    deleteScores.setAttribute("href","#");
+    deleteScores.classList.add('deletescores');
+    deleteScores.classList.add('btn');
+    quizFrame.append(deleteScores);
 }
 
-scoreandtime.addEventListener("click",function(){
-  getScore();
+pastscores.addEventListener("click",function(){
+  highScores();
 })
 
 // Start quiz button
@@ -289,11 +359,10 @@ startButton.addEventListener("click", function(){
     askQuestion();
 })
 
+// Compares user's response with answer
 quizFrame.addEventListener("click", function(e){
     e.preventDefault();
-    // Get button clicks in this way because they are not present when the HTML is loaded
-    // Test if the clicked answer matches the correct answer
-    if (e.target.classList.value.indexOf('possibleanswer') !== -1 && e.target.innerHTML === quizObj.getCorrectAnswers(questionPosition)){
+    if (e.target.classList.value.indexOf('possibleanswer') !== -1 && e.target.innerHTML === qAndAObject.getCorrectAnswers(questionNumber)){
         correct();
     } else if (e.target.classList.value.indexOf('possibleanswer') > 0){
         wrong();
@@ -308,18 +377,16 @@ quizFrame.addEventListener("click", function(e){
         }
     }
     
-    // Clear scores button click
-    if(e.target.classList.value.indexOf('clear-link') !== -1){
+    // Deletes local history on clear score button click
+    if(e.target.classList.value.indexOf('deletescores') !== -1){
         scoreObj.user = [];
         scoreObj.score = [];
         localStorage.setItem('scoreObj', JSON.stringify(scoreObj));
-        getScore();
+        highScores();
     }
 
-    // Replay button game
-    if(e.target.classList.value.indexOf('replay-link') !== -1){
+    // Start a new game
+    if(e.target.classList.value.indexOf('newgame') !== -1){
         window.location.reload();
     }
 })
-
-// View high score link click
