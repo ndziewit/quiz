@@ -1,7 +1,7 @@
 var startButton = document.querySelector('#start-button');
 var timer = document.getElementById('timeleft');
 var quizFrame = document.querySelector('.quiz-frame');
-var highScore = document.querySelector('#highscore');
+var feedback = document.querySelector('.feedback');
 var scoreandtime = document.querySelector('.scoreandtime');
 var score = document.querySelector('#score');
 var endScreen = document.querySelector('.end');
@@ -143,12 +143,12 @@ if (scoreObj === null){
 
 function startTimer(){
     // Output time
-    timer.textContent = time;
+    timer.textContent = "Time Left: " + time;
     // Countdown time
         interval = setInterval(function() {
             if (time > 0) {
                 time--
-                timer.textContent = time;
+                timer.textContent = "Time Left: " + time;
               } else {
                 endQuiz();
             }
@@ -157,6 +157,7 @@ function startTimer(){
 
 function askQuestion(){
     if(questionPosition > 5){
+        feedback.innerHTML = "";
         endQuiz();
     } else{
         // Clear quiz frame html
@@ -171,7 +172,7 @@ function askQuestion(){
         // Create answer options
         for(var i = 0; i < 4; i++){
             answerOption = document.createElement('a');
-            answerOption.classList.add('btn', 'col-md-6', 'possibleanswer');
+            answerOption.classList.add('btn', 'col-md-8', 'possibleanswer');
             answerOption.setAttribute("href","#");
             answerOption.textContent = quizObj.getAnswers(questionPosition,i);
             quizFrame.append(answerOption);
@@ -188,6 +189,7 @@ function correct(){
 
     // Increase correct answer counter
     rightAnswers++;
+    feedback.innerHTML = "<h1>Good Answer!</h1>"
 
     // Set next question
     askQuestion();
@@ -199,6 +201,7 @@ function wrong(){
     // Reduce time
     time -= 10;
     timer.textContent = time;
+    feedback.innerHTML = "I think you got that one wrong..."
 
     // Increase question position
     questionPosition++;
@@ -299,7 +302,7 @@ quizFrame.addEventListener("click", function(e){
     // Submit score button click
     if(e.target.classList.value.indexOf('scoreSubmit') !== -1){
         if(document.querySelector('#playername').value.length === 0){
-            alert("Please enter your name");
+            alert("Hey, buddy, put your name in the box!");
         } else {
             submitScore();
         }
