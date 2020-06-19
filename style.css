@@ -9,23 +9,34 @@ body{
     margin: 0;
 }
 
+p{
+    font-style: italic;
+    font-size: smaller;
+}
+
 h1{
-    size: 34px;
+    size: 40px;
     font-weight: 800;
 }
 
 h2{
-    font-weight: 700;
     font-size: 30px;
 }
 
 .possibleanswer{
-    font-size: 16px;
+    font-size: 20px;
+}
+
+#start-button{
+    font-size: 26px;
 }
 
 .scoreandtime{
     background-color: rgb(252, 166, 209, 0.75);
     border-top: 5px rgb(252, 197, 206, 0.75) solid;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    text-shadow: rgba(0, 0, 0, 0.5) 2px 2px;
 }
 
 .container-fluid{
