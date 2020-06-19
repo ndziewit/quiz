@@ -1,8 +1,8 @@
-html {
+html{
     height: 100%;
 }
 
-body {
+body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(rgba(252, 197, 206, 0.75), rgba(0, 0, 0, 0.5)),url(./Assets/bananabackground.jpg);
     height: 100%;
@@ -19,24 +19,13 @@ h2{
     font-size: 30px;
 }
 
-.possibleanswer {
+.possibleanswer{
     font-size: 16px;
-}
-
-.row{
-    margin-left:0;
-}
-
-section{
-    width:100%;
 }
 
 .scoreandtime{
     background-color: rgb(252, 166, 209, 0.75);
-    width: 100%;
-    position: fixed;
-    margin-left: -15px;
-    border-bottom: 5px rgb(252, 197, 206, 0.75) solid;
+    border-top: 5px rgb(252, 197, 206, 0.75) solid;
 }
 
 .container-fluid{
@@ -46,7 +35,7 @@ section{
     align-content: center;
 }
 
-.quiz-frame{
+.quizcontent{
     margin: auto;
     background-color:rgb(248, 240, 240, 0.75);
     border:rgba(255, 252, 71, 0.75) 6px groove;
@@ -54,7 +43,7 @@ section{
     
 }
 
-.feedback {
+.feedback{
     margin: auto;
     color: white;
     text-shadow: rgb(88, 88, 88) 2px 2px;
@@ -98,12 +87,12 @@ p.winnerscreen{
     color: brown;
 }
 
-#timeleft {
+#timeleft{
     color: green;
     font-size: 30px;
 }
 
-#timeleft:hover {
+#timeleft:hover{
     text-decoration: underline;
     color: brown;
 }

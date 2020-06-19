@@ -11,22 +11,24 @@
     <body>
     
     <main class="container-fluid">
-    <section class="row scoreandtime">
-            <div class="col-3 text-center">
-                <a href="#" id="highscore">Past Scores</a>
-            </div>
-            <div class="col-9 text-center"><span id="timeleft">Time Left: Banana</span></div>
-    </section>
+
     <section class="row">
-       <div class="col-md-10 quiz-frame text-center">
+       <div class="col-md-10 quizcontent text-center">
             <h1>How much do you know about bananas?</h1>
             <button type="button" class="btn" id="start-button">We're about to find out</button>
        </div>
-    <section class="row">
-        <div class="text-center col-md feedback"></div>
     </section>
+    <section class="row">
+        <div class="text-center col-md-12 feedback"></div>
     </section>
     </main>
+
+    <section class="row fixed-bottom scoreandtime">
+        <div class="col-sm-4 col-3-md text-center">
+            <a href="#" id="highscore">Past Scores</a>
+        </div>
+        <div class="col-sm-8 col-9-md text-center"><span id="timeleft">Time Left: Banana</span></div>
+    </section>
     </body>
     <script src="script.js"></script>
 </html>
