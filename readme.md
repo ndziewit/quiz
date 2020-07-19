@@ -13,3 +13,5 @@ Questions and answers are stored in an object and fetched with a "switch" statem
 Correct answers are determined by code that compares the text content of the button pressed with the text content of the correct answer. If there is a perfect match, the game will determine the answer as correct.
 
 Enjoy!
+
+<img width="1323" alt="quizscreen" src="https://user-images.githubusercontent.com/64652517/87865768-fd225200-c946-11ea-93ce-a5c3c51f7342.png">
